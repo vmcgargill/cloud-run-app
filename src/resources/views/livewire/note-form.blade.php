@@ -10,7 +10,7 @@
         <button type="button" wire:click.prevent="submit" style="padding: 10px; border-radius: 5px; cursor: pointer;">
             Submit
         </button>
-    </div><br><br>
+    </div><br>
     <div class="mt-5">
         <table>
             @foreach($notes as $n)
