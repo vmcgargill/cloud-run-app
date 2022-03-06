@@ -19,6 +19,7 @@
                 font-family: 'Nunito', sans-serif;
             }
         </style>
+        @livewireStyles
     </head>
     <body class="antialiased">
         <div class="relative flex items-top justify-center min-h-screen bg-gray-100 dark:bg-gray-900 sm:items-center py-4 sm:pt-0">
@@ -39,10 +40,10 @@
             <div class="max-w-6xl mx-auto sm:px-6 lg:px-8">
                 <h1>Demo app</h1>
                 <div>
-                    <label for="note-text">Note</label><br>
-                    <textarea name="note-text" id="" cols="100" rows="10"></textarea>
+                    @livewire('note-form')
                 </div>
             </div>
         </div>
+        @livewireScripts
     </body>
 </html>
