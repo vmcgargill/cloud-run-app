@@ -9,7 +9,6 @@ use Log;
 class NoteForm extends Component
 {
     public $note;
-    public $notes = [];
     public $listeners = [
         'submit' => '$refresh',
         'delete' => '$refresh'
@@ -22,20 +21,18 @@ class NoteForm extends Component
     public function render()
     {
         return view('livewire.note-form', [
-            'notes' => $this->notes
+            'notes' => Note::all()
         ]);
     }
 
     public function submit()
     {
         $this->validate();
-        array_push($this->notes, ['note' => $this->note]);
-        $this->note = null;
+        Note::create(['note' => $this->note]);
     }
 
-    public function delete($index)
+    public function delete($id)
     {
-        unset($this->notes[$index]);
-        $this->notes = array_values($this->notes);
+        Note::find($id)->delete();
     }
 }
