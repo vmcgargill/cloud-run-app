@@ -1,20 +1,19 @@
-FROM php:7.4-fpm-alpine
+FROM php:7.4
 
-RUN apk add --no-cache nginx supervisor wget
+RUN apt-get update && apt-get install -y \
+    git \
+    curl \
+    libpng-dev \
+    libonig-dev \
+    libxml2-dev \
+    zip \
+    unzip
+RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=usr/local/bin --filename=composer
+RUN docker-php-ext-install pdo_mysql mbstring
 
-RUN mkdir -p /run/nginx
+WORKDIR /app
+COPY composer.json /app/
+RUN composer install --no-scripts
+COPY . .
 
-COPY docker/nginx.conf /etc/nginx/nginx.conf
-
-RUN mkdir -p /app
-COPY . /app
-
-RUN curl -o /tmp/composer-setup.php https://getcomposer.org/installer \
-&& curl -o /tmp/composer-setup.sig https://composer.github.io/installer.sig \
-# Make sure we're installing what we think we're installing!
-&& php -r "if (hash('SHA384', file_get_contents('/tmp/composer-setup.php')) !== trim(file_get_contents('/tmp/composer-setup.sig'))) { unlink('/tmp/composer-setup.php'); echo 'Invalid installer' . PHP_EOL; exit(1); }" \
-&& php /tmp/composer-setup.php --no-ansi --install-dir=/usr/local/bin --filename=composer --snapshot \
-&& rm -f /tmp/composer-setup.*
-RUN chown -R www-data: /app
-
-CMD sh /app/docker/startup.sh
+CMD php artisan serve --host=0.0.0.0 --port 80
