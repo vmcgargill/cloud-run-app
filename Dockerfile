@@ -12,7 +12,7 @@ RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local
 RUN docker-php-ext-install pdo_mysql mbstring
 
 WORKDIR /app
-COPY composer.json /app/
+COPY composer.json .
 RUN composer install --no-scripts
 COPY . .
 
