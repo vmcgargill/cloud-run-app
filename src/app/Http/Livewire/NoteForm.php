@@ -29,6 +29,7 @@ class NoteForm extends Component
     {
         $this->validate();
         Note::create(['note' => $this->note]);
+        $this->note = null;
     }
 
     public function delete($id)
