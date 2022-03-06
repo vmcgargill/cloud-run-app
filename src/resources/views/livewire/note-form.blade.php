@@ -6,7 +6,7 @@
     <div>
         @error('note') <span class="text-danger">{{ $message }}</span> @enderror
     </div>
-    <div class="mt-4">
+    <div class="mt-4 mb-4">
         <button type="button" wire:click.prevent="submit" style="padding: 10px; border-radius: 5px; cursor: pointer;">
             Submit
         </button>
