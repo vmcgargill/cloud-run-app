@@ -19,7 +19,7 @@
                         {{$n->note}}
                     </td>
                     <td>
-                        <button type="button" wire:click.prevent="delete({{$index->id}})" style="padding: 10px; border-radius: 5px; cursor: pointer; color: white; background: red;">Delete</button>
+                        <button type="button" wire:click.prevent="delete({{$n->id}})" style="padding: 10px; border-radius: 5px; cursor: pointer; color: white; background: red;">Delete</button>
                     </td>
                 </tr>
             @endforeach
