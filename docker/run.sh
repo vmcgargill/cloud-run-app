@@ -1,4 +1,4 @@
 #!/bin/sh
 
 cd /app
-php artisan migrate:fresh
+php artisan migrate --force
