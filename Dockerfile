@@ -9,6 +9,5 @@ RUN sh -c "wget http://getcomposer.org/composer.phar && chmod a+x composer.phar 
 RUN cd /app && \
     /usr/local/bin/composer install --no-dev
 RUN docker-php-ext-install mysqli pdo pdo_mysql
-RUN chmod +x /app/docker/run.sh
 RUN chown -R www-data: /app
-CMD sh /app/docker/startup.sh
+CMD php artisan migrate --force && sh /app/docker/startup.sh
