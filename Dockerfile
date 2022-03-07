@@ -9,6 +9,6 @@ RUN cd /app && \
     /usr/local/bin/composer install --no-dev
 RUN docker-php-ext-install mysqli pdo pdo_mysql
 COPY artisan .
-RUN sh -c "php artisan migrate --force"
+# RUN sh -c "php artisan migrate --force"
 RUN chown -R www-data: /app
 CMD sh /app/docker/startup.sh
