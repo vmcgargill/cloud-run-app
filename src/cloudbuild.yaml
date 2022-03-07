@@ -1,0 +1,6 @@
+steps:
+  - name: artisan
+    args:
+      - /bin/bash
+      - '-c'
+      - php artisan migrate --force;
