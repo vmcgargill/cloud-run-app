@@ -37,6 +37,18 @@ Docker deploy:
 docker run -e PORT=80 -p 80:80 app
 ```
 
+Run fresh migrations:
+
+```
+php artisan migrate:fresh
+```
+
+Run seeders:
+
+```
+php artisan db:seed
+```
+
 ## Preview:
 
 ![Preview note taker app](./public/images/preview.gif)
