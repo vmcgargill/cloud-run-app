@@ -48,7 +48,3 @@ Run seeders:
 ```
 php artisan db:seed
 ```
-
-## Preview:
-
-![Preview note taker app](./public/images/preview.gif)
